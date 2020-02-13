@@ -93,7 +93,7 @@ extension Renderer: MTKViewDelegate {
 
         commandEncoder?.drawPrimitives(type: .triangle,
                                     vertexStart: 0,
-                                    vertexCount: 4,
+                                    vertexCount: 6,
                                     instanceCount: content.count)
         commandEncoder?.endEncoding()
         commandBuffer?.present(drawable)

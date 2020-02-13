@@ -61,21 +61,36 @@ vertex VertexOut rect_vert(const device Rect1 *vertices [[ buffer(0) ]],
 //            f_tex_pos = tex_right_bottom;
 //            break;
 //    }
+//    switch (vid) {
+//        case 0:
+//            pos = float2(left, top);
+//            break;
+//        case 1:
+//            pos = float2(right, top);
+//            break;
+//        case 2:
+//            pos = float2(left, bottom);
+//            break;
+//        case 3:
+//            pos = float2(right, bottom);
+//            break;
+//    }
 
-    
 
     float2 pos;
     switch (vid) {
         case 0:
-            pos = float2(left, top);
+        case 3:
+            pos = float2(left, bottom);
             break;
         case 1:
+        case 5:
             pos = float2(right, top);
             break;
         case 2:
-            pos = float2(left, bottom);
+            pos = float2(left, top);
             break;
-        case 3:
+        case 4:
             pos = float2(right, bottom);
             break;
     }
