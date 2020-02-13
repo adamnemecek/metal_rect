@@ -7,12 +7,9 @@
 //
 
 #include <metal_stdlib>
-using namespace metal;
+#include "SharedTypes.h"
 
-struct VertexIn {
-    float3 position;
-    float4 color;
-};
+using namespace metal;
 
 
 struct VertexOut {
@@ -20,7 +17,7 @@ struct VertexOut {
     float4 color;
 };
 
-vertex VertexOut basic_vertex_function(const device VertexIn *vertices [[ buffer(0) ]],
+vertex VertexOut basic_vertex_function(const device Vertex *vertices [[ buffer(0) ]],
                                        uint vertexID [[ vertex_id  ]]) {
     VertexOut vOut;
     vOut.position = float4(vertices[vertexID].position,1);

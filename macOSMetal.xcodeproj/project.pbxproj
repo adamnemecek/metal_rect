@@ -25,6 +25,8 @@
 		2942686B20975A34008B0C65 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		2942686D20975C55008B0C65 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		2942686F20976100008B0C65 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		37792ECE23F6027000A68821 /* macOSMetal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "macOSMetal-Bridging-Header.h"; sourceTree = "<group>"; };
+		37792ECF23F6027000A68821 /* SharedTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedTypes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				2942685B2097593A008B0C65 /* AppDelegate.swift */,
+				37792ECF23F6027000A68821 /* SharedTypes.h */,
 				2942685F2097593B008B0C65 /* Assets.xcassets */,
 				294268612097593B008B0C65 /* Main.storyboard */,
 				294268642097593B008B0C65 /* Info.plist */,
@@ -65,6 +68,7 @@
 				2942686B20975A34008B0C65 /* MetalView.swift */,
 				2942686D20975C55008B0C65 /* Renderer.swift */,
 				2942686F20976100008B0C65 /* Shaders.metal */,
+				37792ECE23F6027000A68821 /* macOSMetal-Bridging-Header.h */,
 			);
 			path = macOSMetal;
 			sourceTree = "<group>";
@@ -101,6 +105,7 @@
 				TargetAttributes = {
 					294268572097593A008B0C65 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -277,10 +282,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = macOSMetal/macOSMetal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8M8SAX62V2;
+				DEVELOPMENT_TEAM = JL8K7LH7KS;
 				INFOPLIST_FILE = macOSMetal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -288,6 +294,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cri.blog.macOSMetal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "macOSMetal/macOSMetal-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -296,10 +304,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = macOSMetal/macOSMetal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8M8SAX62V2;
+				DEVELOPMENT_TEAM = JL8K7LH7KS;
 				INFOPLIST_FILE = macOSMetal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -307,6 +316,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cri.blog.macOSMetal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "macOSMetal/macOSMetal-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

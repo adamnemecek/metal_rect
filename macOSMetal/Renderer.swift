@@ -8,10 +8,10 @@
 
 import MetalKit
 
-struct Vertex {
-    var position: float3
-    var color: float4
-}
+//struct Vertex {
+//    var position: float3
+//    var color: float4
+//}
 
 class Renderer: NSObject {
     var commandQueue: MTLCommandQueue!
