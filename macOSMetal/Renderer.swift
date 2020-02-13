@@ -23,6 +23,10 @@ class Renderer: NSObject {
         Vertex(position: float3(-1,-1,0), color: float4(0,1,0,1)),
         Vertex(position: float3(1,-1,0), color: float4(0,0,1,1))
     ]
+
+    let content: [Rect1] = [
+        Rect1(x: 0, y: 0, w: 0, h: 0, color: float4(1,0,0,1))
+    ]
     
     init(device: MTLDevice) {
         super.init()
@@ -40,9 +44,9 @@ class Renderer: NSObject {
         // The device will make a library for us
         let library = device.makeDefaultLibrary()
         // Our vertex function name
-        let vertexFunction = library?.makeFunction(name: "basic_vertex_function")
+        let vertexFunction = library?.makeFunction(name: "rect_vert")
         // Our fragment function name
-        let fragmentFunction = library?.makeFunction(name: "basic_fragment_function")
+        let fragmentFunction = library?.makeFunction(name: "rect_frag")
         // Create basic descriptor
         let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
         // Attach the pixel format that si the same as the MetalView
@@ -59,8 +63,8 @@ class Renderer: NSObject {
     }
     
     func createBuffers(device: MTLDevice) {
-        vertexBuffer = device.makeBuffer(bytes: vertices,
-                                         length: MemoryLayout<Vertex>.stride * vertices.count,
+        vertexBuffer = device.makeBuffer(bytes: content,
+                                         length: MemoryLayout<Rect1>.stride * content.count,
                                          options: [])
     }
 }
@@ -81,8 +85,16 @@ extension Renderer: MTKViewDelegate {
         // Pass in the vertexBuffer into index 0
         commandEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         // Draw primitive at vertextStart 0
-        commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
-        
+//        commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
+
+//        commandEncoder?.drawPrimitives(type: .triangle,
+//                                       vertexStart: 0,
+//                                       vertexCount: vertices.count)
+
+        commandEncoder?.drawPrimitives(type: .triangle,
+                                    vertexStart: 0,
+                                    vertexCount: 4,
+                                    instanceCount: content.count)
         commandEncoder?.endEncoding()
         commandBuffer?.present(drawable)
         commandBuffer?.commit()

@@ -12,3 +12,8 @@ struct Vertex {
     vector_float3 position;
     vector_float4 color;
 };
+
+struct Rect1 {
+    float x,y,w,h;
+    vector_float4 color;
+};
