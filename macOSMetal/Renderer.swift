@@ -25,7 +25,7 @@ class Renderer: NSObject {
     ]
 
     let content: [Rect1] = [
-        Rect1(x: 0, y: 0, w: 0, h: 0, color: float4(1,0,0,1))
+        Rect1(x: -0.5, y: -0.5, w: 1, h: 1, color: float4(1,0,0,1))
     ]
     
     init(device: MTLDevice) {

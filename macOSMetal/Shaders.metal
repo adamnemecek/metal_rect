@@ -38,10 +38,15 @@ vertex VertexOut rect_vert(const device Rect1 *vertices [[ buffer(0) ]],
                                       uint iid [[instance_id]]) {
 
     auto vert = vertices[iid];
-    float left = -0.5;
-    float right = 0.5;
-    float top = 0.5;
-    float bottom = -0.5;
+//    float left = -0.5;
+//    float right = 0.5;
+//    float top = 0.5;
+//    float bottom = -0.5;
+    float left = vert.x;
+    float right = vert.x + vert.w;
+    float bottom = vert.y;
+    float top = vert.y + vert.h;
+    float2 pos;
 //
 //    switch (gl_VertexID) {
 //        case 0:
@@ -77,7 +82,21 @@ vertex VertexOut rect_vert(const device Rect1 *vertices [[ buffer(0) ]],
 //    }
 
 
-    float2 pos;
+//    switch (vid) {
+//        case 1:
+//            pos = float2(right, top);
+//            break;
+//        case 0:
+//            pos = float2(left, top);
+//            break;
+//        case 2:
+//            pos = float2(right, bottom);
+//            break;
+//        case 3:
+//            pos = float2(left, bottom);
+//            break;
+//    }
+
     switch (vid) {
         case 0:
         case 3:
