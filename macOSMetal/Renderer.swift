@@ -25,7 +25,8 @@ class Renderer: NSObject {
     ]
 
     let content: [Rect1] = [
-        Rect1(x: -0.5, y: -0.5, w: 1, h: 1, color: float4(1,0,0,1))
+        Rect1(x: -0.5, y: -0.5, w: 0.3, h: 0.3, color: float4(1,0,0,1)),
+        Rect1(x: 0.5, y: 0.5, w: 0.3, h: 0.3, color: float4(1,0,0,1))
     ]
     
     init(device: MTLDevice) {
@@ -91,9 +92,9 @@ extension Renderer: MTKViewDelegate {
 //                                       vertexStart: 0,
 //                                       vertexCount: vertices.count)
 
-        commandEncoder?.drawPrimitives(type: .triangle,
+        commandEncoder?.drawPrimitives(type: .triangleStrip,
                                     vertexStart: 0,
-                                    vertexCount: 6,
+                                    vertexCount: 4,
                                     instanceCount: content.count)
         commandEncoder?.endEncoding()
         commandBuffer?.present(drawable)
