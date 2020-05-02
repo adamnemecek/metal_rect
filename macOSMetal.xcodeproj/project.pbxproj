@@ -292,6 +292,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				PRODUCT_BUNDLE_IDENTIFIER = cri.blog.macOSMetal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "macOSMetal/macOSMetal-Bridging-Header.h";

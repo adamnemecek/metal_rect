@@ -15,6 +15,8 @@ using namespace metal;
 struct VertexOut {
     float4 position [[ position ]];
     float4 color;
+    float width;
+    float height;
 };
 
 vertex VertexOut basic_vertex_function(const device Vertex *vertices [[ buffer(0) ]],
@@ -62,6 +64,8 @@ vertex VertexOut rect_vert(const device Rect1 *vertices [[ buffer(0) ]],
     VertexOut vOut;
     vOut.position = float4(pos, 0,1);
     vOut.color = vert.color;
+    vOut.height = u->height;
+    vOut.width = u->width;
     return vOut;
 }
 
@@ -72,6 +76,9 @@ float sdRoundBox(float2 p, float2 b, float r)
 }
 
 fragment float4 rect_frag(VertexOut vIn [[ stage_in ]]) {
-    return vIn.color;
+    float2 b = float2(vIn.width, vIn.height);
+    float d = sdRoundBox(vIn.position.xy, b, 5.0);
+    float blend = smoothstep(-1.0, 1.0, d);
+    return mix(vIn.color, float4(), blend);
 }
 
