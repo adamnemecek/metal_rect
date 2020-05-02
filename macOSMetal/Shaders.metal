@@ -18,6 +18,7 @@ struct VertexOut {
 };
 
 vertex VertexOut basic_vertex_function(const device Vertex *vertices [[ buffer(0) ]],
+
                                        uint vertexID [[ vertex_id  ]]) {
     VertexOut vOut;
     vOut.position = float4(vertices[vertexID].position,1);
@@ -30,6 +31,7 @@ fragment float4 basic_fragment_function(VertexOut vIn [[ stage_in ]]) {
 }
 
 vertex VertexOut rect_vert(const device Rect1 *vertices [[ buffer(0) ]],
+                            const device Uniforms *u [[buffer(1)]],
                                       uint vid [[ vertex_id  ]],
                                       uint iid [[instance_id]]) {
 
@@ -61,6 +63,12 @@ vertex VertexOut rect_vert(const device Rect1 *vertices [[ buffer(0) ]],
     vOut.position = float4(pos, 0,1);
     vOut.color = vert.color;
     return vOut;
+}
+
+float sdRoundBox(float2 p, float2 b, float r)
+{
+    float2 q = abs(p)-b+r;
+    return min(max(q.x,q.y),0.0) + length(max(q,0.0)) - r;
 }
 
 fragment float4 rect_frag(VertexOut vIn [[ stage_in ]]) {

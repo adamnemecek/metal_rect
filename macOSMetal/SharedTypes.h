@@ -17,3 +17,7 @@ struct Rect1 {
     float x,y,w,h;
     vector_float4 color;
 };
+
+struct Uniforms {
+    int a;
+};

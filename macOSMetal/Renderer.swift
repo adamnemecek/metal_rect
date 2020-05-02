@@ -18,11 +18,12 @@ class Renderer: NSObject {
     var renderPipelineState: MTLRenderPipelineState!
     
     var vertexBuffer: MTLBuffer!
-    var vertices: [Vertex] = [
-        Vertex(position: float3(0,1,0), color: float4(1,0,0,1)),
-        Vertex(position: float3(-1,-1,0), color: float4(0,1,0,1)),
-        Vertex(position: float3(1,-1,0), color: float4(0,0,1,1))
-    ]
+    var uniformsBuffer: MTLBuffer!
+//    var vertices: [Vertex] = [
+//        Vertex(position: float3(0,1,0), color: float4(1,0,0,1)),
+//        Vertex(position: float3(-1,-1,0), color: float4(0,1,0,1)),
+//        Vertex(position: float3(1,-1,0), color: float4(0,0,1,1))
+//    ]
 
     let content: [Rect1] = [
         Rect1(x: -0.5, y: -0.5, w: 0.3, h: 0.3, color: float4(1,0,0,1)),
@@ -30,6 +31,8 @@ class Renderer: NSObject {
         Rect1(x: 0.5, y: 0.5, w: 0.3, h: 0.3, color: float4(1,0,0,1)),
         Rect1(x: 0.5, y: -0.4, w: 0.3, h: 0.3, color: float4(1,0,0,1))
     ]
+
+    private var uniforms = Uniforms()
     
     init(device: MTLDevice) {
         super.init()
@@ -68,6 +71,9 @@ class Renderer: NSObject {
     func createBuffers(device: MTLDevice) {
         vertexBuffer = device.makeBuffer(bytes: content,
                                          length: MemoryLayout<Rect1>.stride * content.count,
+                                         options: [])
+        uniformsBuffer = device.makeBuffer(bytes: &uniforms,
+                                         length: MemoryLayout<Uniforms>.stride,
                                          options: [])
     }
 }
