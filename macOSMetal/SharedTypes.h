@@ -20,5 +20,7 @@ struct Rect1 {
 };
 
 struct Uniforms {
-    vector_float2 size;
+//    vector_float2 size;
+    float height;
+    float width;
 };

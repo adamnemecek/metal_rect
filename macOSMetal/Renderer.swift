@@ -87,6 +87,10 @@ extension Renderer: MTKViewDelegate {
             let renderPassDescriptor = view.currentRenderPassDescriptor else {
                 return
         }
+
+        self.uniforms.height = Float(drawable.texture.height)
+        self.uniforms.width = Float(drawable.texture.width)
+
         // Create a buffer from the commandQueue
         guard let commandBuffer = commandQueue.makeCommandBuffer(),
             let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else {
