@@ -24,7 +24,7 @@
 		294268652097593B008B0C65 /* macOSMetal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOSMetal.entitlements; sourceTree = "<group>"; };
 		2942686B20975A34008B0C65 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		2942686D20975C55008B0C65 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		2942686F20976100008B0C65 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		2942686F20976100008B0C65 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.metal; };
 		37792ECE23F6027000A68821 /* macOSMetal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "macOSMetal-Bridging-Header.h"; sourceTree = "<group>"; };
 		37792ECF23F6027000A68821 /* SharedTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedTypes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
