@@ -8,6 +8,7 @@
 
 #import <simd/simd.h>
 
+
 struct Vertex {
     vector_float3 position;
     vector_float4 color;
@@ -19,5 +20,5 @@ struct Rect1 {
 };
 
 struct Uniforms {
-    int a;
+    vector_float2 size;
 };

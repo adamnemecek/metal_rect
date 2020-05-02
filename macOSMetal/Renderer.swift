@@ -88,11 +88,16 @@ extension Renderer: MTKViewDelegate {
                 return
         }
         // Create a buffer from the commandQueue
-        let commandBuffer = commandQueue.makeCommandBuffer()
-        let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
-        commandEncoder?.setRenderPipelineState(renderPipelineState)
+        guard let commandBuffer = commandQueue.makeCommandBuffer(),
+            let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else {
+            fatalError()
+        }
+        commandEncoder.setRenderPipelineState(renderPipelineState)
+
         // Pass in the vertexBuffer into index 0
-        commandEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        uniformsBuffer.contents().copyMemory(from: &uniforms, byteCount: MemoryLayout<Uniforms>.size)
+        commandEncoder.setVertexBuffer(uniformsBuffer, offset: 0, index: 1)
         // Draw primitive at vertextStart 0
 //        commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
 
@@ -100,12 +105,12 @@ extension Renderer: MTKViewDelegate {
 //                                       vertexStart: 0,
 //                                       vertexCount: vertices.count)
 
-        commandEncoder?.drawPrimitives(type: .triangleStrip,
+        commandEncoder.drawPrimitives(type: .triangleStrip,
                                     vertexStart: 0,
                                     vertexCount: 4,
                                     instanceCount: content.count)
-        commandEncoder?.endEncoding()
-        commandBuffer?.present(drawable)
-        commandBuffer?.commit()
+        commandEncoder.endEncoding()
+        commandBuffer.present(drawable)
+        commandBuffer.commit()
     }
 }
