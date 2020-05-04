@@ -76,10 +76,9 @@ vertex VertexOut rect_vert(const device Rect1 *vertices [[ buffer(0) ]],
     return vOut;
 }
 
-float sdRoundBox(float2 p, float2 b, float r)
-{
-    float2 q = abs(p)-b+r;
-    return min(max(q.x,q.y),0.0) + length(max(q,0.0)) - r;
+float sdRoundBox(float2 p, float2 b, float r) {
+    float2 q = abs(p) - b + r;
+    return min(max(q.x,q.y), 0.0) + length(max(q, 0.0)) - r;
 }
 
 //fragment float4 rect_frag(VertexOut vIn [[ stage_in ]]) {
