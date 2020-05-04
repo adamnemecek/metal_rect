@@ -36,7 +36,7 @@ fragment float4 basic_fragment_function(VertexOut vIn [[ stage_in ]]) {
 
 vertex VertexOut rect_vert(const device Rect1 *vertices [[ buffer(0) ]],
                            const device Uniforms *u [[buffer(1)]],
-                           uint vid [[ vertex_id  ]],
+                           uint vid [[ vertex_id ]],
                            uint iid [[instance_id]]) {
 
     auto vert = vertices[iid];
@@ -68,11 +68,11 @@ vertex VertexOut rect_vert(const device Rect1 *vertices [[ buffer(0) ]],
     vOut.color = vert.color;
     vOut.height = u->height;
     vOut.width = u->width;
-    float2 res = float2(u->width, u->height);
+    float2 size = float2(u->width, u->height);
     float2 clipCenter = float2((left + right) / 2.0, (top + bottom) / 2.0);
     float2 clipHalfSize = float2(vert.w, vert.h) * 0.5;
-    vOut.center = (clipCenter * float2(1.0f, -1.0f) + 1.0f) * 0.5 * res;
-    vOut.halfSize = clipHalfSize * 0.5f * res;
+    vOut.center = (clipCenter * float2(1.0f, -1.0f) + 1.0f) * 0.5 * size;
+    vOut.halfSize = clipHalfSize * 0.5f * size;
     return vOut;
 }
 

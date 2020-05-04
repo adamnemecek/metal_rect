@@ -26,7 +26,7 @@ class Renderer: NSObject {
 //    ]
 
     let content: [Rect1] = [
-        Rect1(x: -0.5, y: -0.5, w: 0.3, h: 0.3, color: float4(1,0,0,1)),
+        Rect1(x: -0.5, y: -0.5, w: 0.6, h: 0.3, color: float4(1,0,0,1)),
         Rect1(x: 0.3, y: -0.5, w: 0.3, h: 0.3, color: float4(1,0,0,1)),
         Rect1(x: 0.5, y: 0.5, w: 0.3, h: 0.3, color: float4(1,0,0,1)),
         Rect1(x: 0.5, y: -0.4, w: 0.3, h: 0.3, color: float4(1,0,0,1))
