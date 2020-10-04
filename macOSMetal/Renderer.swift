@@ -95,6 +95,7 @@ extension Renderer: MTKViewDelegate {
                 return
         }
 
+//        print("width \(drawable.texture.width), height: \(drawable.texture.height)")
         self.uniforms.height = Float(drawable.texture.height)
         self.uniforms.width = Float(drawable.texture.width)
 

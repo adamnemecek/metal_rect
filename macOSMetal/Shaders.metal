@@ -15,8 +15,9 @@ using namespace metal;
 struct VertexOut {
     float4 position [[ position ]];
     float4 color;
-    float width;
-    float height;
+    float2 size;
+//    float width;
+//    float height;
     float2 center;
     float2 halfSize;
 };
@@ -66,9 +67,10 @@ vertex VertexOut rect_vert(const device Rect1 *vertices [[ buffer(0) ]],
     VertexOut vOut;
     vOut.position = float4(pos, 0,1);
     vOut.color = vert.color;
-    vOut.height = u->height;
-    vOut.width = u->width;
     float2 size = float2(u->width, u->height);
+//    vOut.height = u->height;
+//    vOut.width = u->width;
+    vOut.size = size;
     float2 clipCenter = float2((left + right) / 2.0, (top + bottom) / 2.0);
     float2 clipHalfSize = float2(vert.w, vert.h) * 0.5;
     vOut.center = (clipCenter * float2(1.0f, -1.0f) + 1.0f) * 0.5 * size;
