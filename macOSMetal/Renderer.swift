@@ -18,7 +18,10 @@ class Renderer: NSObject {
     var renderPipelineState: MTLRenderPipelineState!
     
     var vertexBuffer: MTLBuffer!
+    var vertexBuffer1: MTLBuffer!
     var uniformsBuffer: MTLBuffer!
+
+    var state = false
 //    var vertices: [Vertex] = [
 //        Vertex(position: float3(0,1,0), color: float4(1,0,0,1)),
 //        Vertex(position: float3(-1,-1,0), color: float4(0,1,0,1)),
@@ -26,11 +29,25 @@ class Renderer: NSObject {
 //    ]
 
     let content: [Rect1] = [
-        Rect1(x: -0.5, y: -0.5, w: 0.6, h: 0.3, color: float4(1,0,0,1)),
-        Rect1(x: 0.3, y: -0.5, w: 0.3, h: 0.3, color: float4(1,0,0,1)),
-        Rect1(x: 0.5, y: 0.5, w: 0.3, h: 0.3, color: float4(1,0,0,1)),
-        Rect1(x: 0.5, y: -0.4, w: 0.3, h: 0.3, color: float4(1,0,0,1))
+        Rect1(x: -0.5, y: -0.5, w: 0.2, h: 0.2, color: float4(1,0,0,1)),
+        Rect1(x: 0.0, y: 0, w: 0.2, h: 0.2, color: float4(1,0,0,1)),
+//        Rect1(x: 0.5, y: 0.5, w: 0.3, h: 0.3, color: float4(1,0,0,1)),
+//        Rect1(x: 0.5, y: -0.4, w: 0.3, h: 0.3, color: float4(1,0,0,1))
     ]
+
+        let content1: [Rect1] = [
+           Rect1(x: -0.5, y: -0.5, w: 0.2, h: 0.2, color: float4(0,0,1,1)),
+           Rect1(x: 0.0, y: 0, w: 0.2, h: 0.2, color: float4(0,0,1,1)),
+//               Rect1(x: 0.5, y: 0.5, w: 0.3, h: 0.3, color: float4(0,1,0,1)),
+//               Rect1(x: 0.5, y: -0.4, w: 0.3, h: 0.3, color: float4(0,1,0,1))
+        ]
+
+//    let content1: [Rect1] = [
+//           Rect1(x: -0.5, y: -0.5, w: 0.6, h: 0.3, color: float4(0,1,0,1)),
+//           Rect1(x: 0.3, y: -0.5, w: 0.3, h: 0.3, color: float4(0,1,0,1)),
+//           Rect1(x: 0.5, y: 0.5, w: 0.3, h: 0.3, color: float4(0,1,0,1)),
+//           Rect1(x: 0.5, y: -0.4, w: 0.3, h: 0.3, color: float4(0,1,0,1))
+//    ]
 
     private var uniforms = Uniforms()
     
@@ -79,10 +96,15 @@ class Renderer: NSObject {
         vertexBuffer = device.makeBuffer(bytes: content,
                                          length: MemoryLayout<Rect1>.stride * content.count,
                                          options: [])
+
+        vertexBuffer1 = device.makeBuffer(bytes: content1,
+                                         length: MemoryLayout<Rect1>.stride * content.count,
+                                         options: [])
         uniformsBuffer = device.makeBuffer(bytes: &uniforms,
                                          length: MemoryLayout<Uniforms>.stride,
                                          options: [])
     }
+
 }
 
 extension Renderer: MTKViewDelegate {
@@ -107,7 +129,12 @@ extension Renderer: MTKViewDelegate {
         commandEncoder.setRenderPipelineState(renderPipelineState)
 
         // Pass in the vertexBuffer into index 0
-        commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        if self.state {
+            commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        } else {
+            commandEncoder.setVertexBuffer(vertexBuffer1, offset: 0, index: 0)
+        }
+
         uniformsBuffer.contents().copyMemory(from: &uniforms, byteCount: MemoryLayout<Uniforms>.size)
         commandEncoder.setVertexBuffer(uniformsBuffer, offset: 0, index: 1)
         // Draw primitive at vertextStart 0

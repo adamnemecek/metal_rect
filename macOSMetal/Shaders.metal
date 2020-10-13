@@ -73,8 +73,10 @@ vertex VertexOut rect_vert(const device Rect1 *vertices [[ buffer(0) ]],
     vOut.size = size;
     float2 clipCenter = float2((left + right) / 2.0, (top + bottom) / 2.0);
     float2 clipHalfSize = float2(vert.w, vert.h) * 0.5;
-    vOut.center = (clipCenter * float2(1.0f, -1.0f) + 1.0f) * 0.5 * size;
-    vOut.halfSize = clipHalfSize * 0.5f * size;
+    float2 center = (clipCenter * float2(1.0f, -1.0f) + 1.0f) * 0.5 * size;;
+    vOut.center = center;
+    float2 halfSize = clipHalfSize * 0.5f * size;
+    vOut.halfSize = halfSize;
     return vOut;
 }
 

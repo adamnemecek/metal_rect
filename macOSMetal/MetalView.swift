@@ -23,6 +23,11 @@ class MetalView: MTKView {
         clearColor = MTLClearColor(red: 0.1, green: 0.57, blue: 0.25, alpha: 1)
         createRenderer(device: defaultDevice)
     }
+
+    override func mouseDown(with event: NSEvent) {
+        self.renderer.state = !self.renderer.state
+        Swift.print("czx")
+    }
     
     func createRenderer(device: MTLDevice){
         renderer = Renderer(device: device)
