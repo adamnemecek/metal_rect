@@ -15,6 +15,7 @@
 		2942687020976100008B0C65 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2942686F20976100008B0C65 /* Shaders.metal */; };
 		37F0ADEA27F62BFB00373728 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F0ADE927F62BFB00373728 /* Camera.swift */; };
 		37F0ADED27F6498A00373728 /* SwiftMath in Frameworks */ = {isa = PBXBuildFile; productRef = 37F0ADEC27F6498A00373728 /* SwiftMath */; };
+		37F0ADF027F64A7300373728 /* CGExt in Frameworks */ = {isa = PBXBuildFile; productRef = 37F0ADEF27F64A7300373728 /* CGExt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37F0ADF027F64A7300373728 /* CGExt in Frameworks */,
 				37F0ADED27F6498A00373728 /* SwiftMath in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +98,7 @@
 			name = macOSMetal;
 			packageProductDependencies = (
 				37F0ADEC27F6498A00373728 /* SwiftMath */,
+				37F0ADEF27F64A7300373728 /* CGExt */,
 			);
 			productName = macOSMetal;
 			productReference = 294268582097593A008B0C65 /* macOSMetal.app */;
@@ -128,6 +131,7 @@
 			mainGroup = 2942684F2097593A008B0C65;
 			packageReferences = (
 				37F0ADEB27F6498A00373728 /* XCRemoteSwiftPackageReference "SwiftMath" */,
+				37F0ADEE27F64A7300373728 /* XCRemoteSwiftPackageReference "CGExt" */,
 			);
 			productRefGroup = 294268592097593A008B0C65 /* Products */;
 			projectDirPath = "";
@@ -366,6 +370,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		37F0ADEE27F64A7300373728 /* XCRemoteSwiftPackageReference "CGExt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamnemecek/CGExt.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -373,6 +385,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 37F0ADEB27F6498A00373728 /* XCRemoteSwiftPackageReference "SwiftMath" */;
 			productName = SwiftMath;
+		};
+		37F0ADEF27F64A7300373728 /* CGExt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 37F0ADEE27F64A7300373728 /* XCRemoteSwiftPackageReference "CGExt" */;
+			productName = CGExt;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
