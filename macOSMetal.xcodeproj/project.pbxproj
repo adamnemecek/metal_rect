@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		2942686C20975A34008B0C65 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942686B20975A34008B0C65 /* MetalView.swift */; };
 		2942686E20975C55008B0C65 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942686D20975C55008B0C65 /* Renderer.swift */; };
 		2942687020976100008B0C65 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2942686F20976100008B0C65 /* Shaders.metal */; };
+		37F0ADEA27F62BFB00373728 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F0ADE927F62BFB00373728 /* Camera.swift */; };
+		37F0ADED27F6498A00373728 /* SwiftMath in Frameworks */ = {isa = PBXBuildFile; productRef = 37F0ADEC27F6498A00373728 /* SwiftMath */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,7 @@
 		2942686F20976100008B0C65 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.metal; };
 		37792ECE23F6027000A68821 /* macOSMetal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "macOSMetal-Bridging-Header.h"; sourceTree = "<group>"; };
 		37792ECF23F6027000A68821 /* SharedTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedTypes.h; sourceTree = "<group>"; };
+		37F0ADE927F62BFB00373728 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37F0ADED27F6498A00373728 /* SwiftMath in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +65,7 @@
 			children = (
 				2942685B2097593A008B0C65 /* AppDelegate.swift */,
 				37792ECF23F6027000A68821 /* SharedTypes.h */,
+				37F0ADE927F62BFB00373728 /* Camera.swift */,
 				2942685F2097593B008B0C65 /* Assets.xcassets */,
 				294268612097593B008B0C65 /* Main.storyboard */,
 				294268642097593B008B0C65 /* Info.plist */,
@@ -89,6 +94,9 @@
 			dependencies = (
 			);
 			name = macOSMetal;
+			packageProductDependencies = (
+				37F0ADEC27F6498A00373728 /* SwiftMath */,
+			);
 			productName = macOSMetal;
 			productReference = 294268582097593A008B0C65 /* macOSMetal.app */;
 			productType = "com.apple.product-type.application";
@@ -118,6 +126,9 @@
 				Base,
 			);
 			mainGroup = 2942684F2097593A008B0C65;
+			packageReferences = (
+				37F0ADEB27F6498A00373728 /* XCRemoteSwiftPackageReference "SwiftMath" */,
+			);
 			productRefGroup = 294268592097593A008B0C65 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -145,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2942687020976100008B0C65 /* Shaders.metal in Sources */,
+				37F0ADEA27F62BFB00373728 /* Camera.swift in Sources */,
 				2942686C20975A34008B0C65 /* MetalView.swift in Sources */,
 				2942686E20975C55008B0C65 /* Renderer.swift in Sources */,
 				2942685C2097593A008B0C65 /* AppDelegate.swift in Sources */,
@@ -344,6 +356,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		37F0ADEB27F6498A00373728 /* XCRemoteSwiftPackageReference "SwiftMath" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftGFX/SwiftMath.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		37F0ADEC27F6498A00373728 /* SwiftMath */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 37F0ADEB27F6498A00373728 /* XCRemoteSwiftPackageReference "SwiftMath" */;
+			productName = SwiftMath;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 294268502097593A008B0C65 /* Project object */;
 }
